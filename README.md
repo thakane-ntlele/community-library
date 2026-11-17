@@ -1,16 +1,71 @@
-# React + Vite
+# Community Library
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack library management system for a community library.
+Manage books, track stock, record borrowing/returns, and manage users.
 
-Currently, two official plugins are available:
+#Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+#Book Management
+- Add new books: Title, Author, Genre, ISBN, Initial Quantity
+- Update existing book details
+- Delete books that are no longer available
 
-## React Compiler
+#Availability Management
+- Track quantity of each book in stock
+- Add stock when new books arrive
+- Deduct stock when books are borrowed
+- Dashboard highlights low stock books (fewer than 2 copies)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+#Transactions
+- Record borrow and return transactions
+- View transaction history log
 
-## Expanding the ESLint configuration
+#User Management
+- Login form for users
+- Add new users: Name, Membership ID, Role
+- Update and delete users
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Tech Stack
+- Frontend: React (Vite), React Router, Hooks (useState, useEffect), Fetch API, CSS
+- Backend: Node.js, Express.js
+- Database: MySQL / PostgreSQL
+- Communication: React -> Express -> Database
+
+## Project Structure
+community-library/
+├── frontend/          # React app
+│   ├── src/
+│   │   ├── components/  # AddBookForm, BookList, Navbar
+│   │   ├── pages/       # Dashboard, Books, Transactions, Users, Login
+│   │   ├── App.jsx
+│   │   └── main.jsx
+├── backend/           # Express API
+│   ├── server.js      # Routes for /books, /users, /transactions
+│   ├── db.js          # Database connection
+│   └── package.json
+
+#How To Run
+
+#1. Backend
+cd backend
+npm install
+npm start
+Backend runs on http://localhost:5000
+
+#2. Frontend
+cd frontend
+npm install
+npm run dev
+Frontend runs on http://localhost:5173
+
+# API Endpoints
+- GET /books - Get all books
+- POST /books - Add a book
+- PUT /books/:id - Update a book
+- DELETE /books/:id - Delete a book
+- GET /users - Get all users
+- POST /users - Add a user
+- PUT /users/:id - Update a user
+- DELETE /users/:id - Delete a user
+- GET /transactions - Get transaction history
+- POST /transactions - Add / deduct stock
